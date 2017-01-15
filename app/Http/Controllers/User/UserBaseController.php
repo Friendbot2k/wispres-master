@@ -34,7 +34,6 @@ class UserBaseController extends Controller
             'notifiable_type' => 'App\User',
         ])->orderBy('created_at','desc')->paginate(15);
 
-//        dd($notifications);
         return view('user.notifications',compact('notifications'));
     }
     

@@ -3,7 +3,7 @@
 
 <head>
 
-    <title>KEEPING IT SIMPLE SOLUTIONS</title>
+    <title>The Wisdom Preserve</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{ url('libs/bootstrap.min.css ') }}">
@@ -29,7 +29,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand pull-right" href="{{ url('/') }}">KEEPING IT SIMPLE SOLUTIONS LLC</a>
+                    <a class="navbar-brand pull-right" href="{{ url('/') }}">THE WISDOM PRESERVE</a>
                 </div>
                 <div class="collapse navbar-collapse right-menu" id="myNavbar">
                     <div class="all-search hidden">
@@ -44,10 +44,9 @@
                     <ul class="nav navbar-nav">
                         <li><a id= 'menu-home' href="{{ url('/home') }}">Home</a></li>
 
-                        <li><a id= 'menu-about' href="{{ url('about') }}"> About Us </a></li>
+                        <li><a id= 'menu-about' href="{{ url('aboutUs') }}"> About Us </a></li>
                         <li><a id= 'menu-partnerWithUS' href="{{ url('partnerWithUS') }}"> Partner With Us</a></li>
                         <li><a id= 'menu-search' href="{{ url('search') }}"> Services</a></li>
-                        <li><a id= 'menu-contact' href="{{ url('contact') }}"> Contact </a></li>
                         @if (isset($user))
                             <li><a href="#" class="search"><i class="fa fa-search" aria-hidden="true"></i></a></li>
                             <li>
@@ -145,18 +144,19 @@
         <div class="col-xs-2">
 
             <h5>PRODUCT</h5>
-            <a>Features</a>
-            <a>Pricing</a>
-            <a>Terms of Service</a>
+            <a href="{{ url('terms') }}">Terms and Conditions</a>
 
+            
         </div>
 
         <div class="col-xs-2">
 
             <h5>COMPANY</h5>
-            <a>About Us</a>
-            <a>Blog</a>
-            <a>Contact Us</a>
+            <a href="{{ url('aboutUs') }}"> About Us </a>
+<!--             <a>Our Principles</a>
+            <a>Blog</a> -->
+            <a href="{{ url('contact') }}"> Contact Us </a></li>
+
 
 
         </div>
@@ -164,9 +164,8 @@
         <div class="col-xs-2">
 
             <h5>LEARN MORE</h5>
-            <a>Support</a>
-            <a>Referral Program</a>
-
+<!--             <a>Support</a> -->
+            <a href="{{ url('partnerWithUS') }}"> Referral Program</a>
 
         </div>
 
@@ -181,7 +180,7 @@
                 <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
                 <a href="#"><i class="fa fa-wifi wifi" aria-hidden="true"></i></a>
 
-                <p>Copyright Info</p>
+                <p>Copyright Puppy Drum LLC</p>
             </div>
 
         </div>
@@ -200,6 +199,9 @@
 <script src="{{ url('js/custom.js') }}"></script>
 <script src="{{ url('js/sweetalert.min.js') }}"></script>
 <script src="{{ url('js/activeMneu.js') }}"></script>
+<script type="text/javascript" src="{{ url('js/js-playlist.js') }}"></script>
+<!--optional file for subtitles-->
+<script type="text/javascript" src="{{ url('js/videosub.js') }}"></script>
 @yield('script')
 </body>
 </html>

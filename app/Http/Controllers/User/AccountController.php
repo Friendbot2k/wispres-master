@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
+use App\Models\Answer;
 use Image, Hash;
 
 use App\Http\Requests;
@@ -25,7 +26,14 @@ class AccountController extends UserBaseController
             'email' => 'required|email|unique:users,email,' . $this->user->id(),
         ]);
 
-        $data = $request->except(['avatar','_token']);
+        $data = $request->except(['avatar','_token','alias']);
+        if($request->alias == '') {
+            $data['alias'] = NULL;
+             Answer::withTrashed()->where('user_id',$this->user->id())->update(['alias' => 0]);
+        }
+        else{
+            $data['alias'] = $request->alias;
+        }
 
         if(!is_null(request()->avatar))
         {

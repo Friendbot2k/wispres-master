@@ -38,10 +38,10 @@ class AnswerController extends UserBaseController
     public function postAnswer($id, Request $request)
     {
 
-        $this->validate($request, [
-            'alias' => 'required',
-            'images.*' => 'image',
-        ]);
+//        $this->validate($request, [
+//            'images.*' => 'image|max:20000',
+//            'videos.*' => 'mimes:mp4|max:20000'
+//        ]);
 
         $answer = $this->createAnswer($id, $request->all());
 
@@ -65,7 +65,7 @@ class AnswerController extends UserBaseController
     
     public function createAnswer($id, $request)
     {
-        isset($request['content']) ? $content = $request['content'] : $content = '';
+        isset($request['content']) ? $content = $request['content'] : $content = NULL;
         isset($request['checkbox3']) ? $alias = 1 : $alias = 0;
         $answer = Answer::create([
             'content' => $content,
@@ -92,9 +92,24 @@ class AnswerController extends UserBaseController
 
     public function postUpdateAnswer($id, Request $request)
     {
-
         $answer = Answer::withTrashed()->where(['question_id' => $id, 'user_id' => $this->user->id()])->first();
-        $answer->update(['content' => $request->content, 'deleted_at' => Carbon::now()]);
+
+        isset($request->content) ? $content = $request->content : $content = NULL;
+
+        $answer->update(['content' => $content, 'deleted_at' => Carbon::now()]);
+
+        if(count($request->images)>=1 && $request->images[0]!=NULL  && $this->user->user()->status == 'gold') {
+            $data['images']  = $request->images;
+            $data['removed']  = $request->removed_images;
+            $this->addFile('images', $data, $answer->id);
+        }
+
+        if(count($request->videos)>=1 && $request->videos[0]!=NULL && $this->user->user()->status == 'gold') {
+            $data['videos']  = $request->videos;
+            $data['removed']  = $request->removed_videos;
+            $this->addFile('videos', $data, $answer->id);
+        }
+
 
         UserQuestion::where(['user_id' => $this->user->id(), 'question_id' => $id])->update(['status' => 'Not checked']);
         NotificationsController::answer_updated(1, $this->user->id(), $answer->question_id);
@@ -124,11 +139,12 @@ class AnswerController extends UserBaseController
     public function getAlias($id, $alias)
     {
         $answer = Answer::withTrashed()->where(['user_id' => $this->user->id(), 'question_id' => $id])->first();
+
         $answer->update(['alias' => $alias]);
 
-        Session::flash('success', 'Name changed!');
+//        Session::flash('success', 'Name changed!');
 
-        return redirect('/user/questions');
+//        return redirect('/user/questions');
 
     }
 
@@ -144,81 +160,78 @@ class AnswerController extends UserBaseController
         return UserQuestion::where(['user_id' => $this->user->id(), 'question_id' => $question_id])->first()->status == 'DELETED';
     }
 
-//jnjel
-    public function addImages($id, Request $request)
-    {
-        if($this->user->user()->status != 'gold')
-            return back()->with('error', 'You have no privilege.');
-        $this->validate($request, [
-            'images.*' => 'image'
-        ]);
-
-        $answer = Answer::withTrashed()->where(['question_id' => $id, 'user_id' => $this->user->id()])->first();
-
-        $created = false;
-        if (!$answer) {
-            $answer = $this->createAnswer($id, $request->all());
-            $created=true;
-        }
-
-
-        $this->addFile('images', $request->all(), $answer->id);
-//        $this->addFile('images', $request->all(), $id);
-
-        if(!$created){
-            UserQuestion::where(['user_id' => $this->user->id(), 'question_id' => $id])->update(['status' => 'Not checked']);
-            NotificationsController::answer_updated(1, $this->user->id(), $answer->question_id);
-        }
-
-
-        Session::flash('success', 'Images added!');
-
-        return redirect("user/question/answer/$id/edit");
-    }
-
-    //jnjel
-    public function addVideos($id,Request $request)
-    {
-        if ($this->user->user()->status != 'gold')
-            return back()->with('error', 'You have no privilege.');
-//        $this->validate($request,[
-//            'videos.*' =>  ' mimes:video/x-flv,
-//                             video/mp4,
-//                             application/x-mpegURL,
-//                             video/MP2T,
-//                             video/3gpp,
-//                             video/quicktime,
-//                             video/x-msvideo,
-//                             video/x-ms-wmv
-//                              | max:30000000000'
+////jnjel
+//    public function addImages($id, Request $request)
+//    {
+//        if($this->user->user()->status != 'gold')
+//            return back()->with('error', 'You have no privilege.');
+//        $this->validate($request, [
+//            'images.*' => 'image'
 //        ]);
-//        dd($request->all());
-
-        $answer = Answer::withTrashed()->where(['question_id' => $id, 'user_id' => $this->user->id()])->first();
-
-        $created =false;
-        if (!$answer) {
-            $answer = $this->createAnswer($id, $request->all());
-            $created=true;
-        }
-
-        $this->addFile('videos', $request->all(), $answer->id);
-
-        if(!$created){
-            UserQuestion::where(['user_id' => $this->user->id(), 'question_id' => $id])->update(['status' => 'Not checked']);
-            NotificationsController::answer_updated(1, $this->user->id(), $answer->question_id);
-        }
-
-        Session::flash('success', 'Videos added!');
-
-        return redirect("user/question/answer/$id/edit");
-    }
+//
+//        $answer = Answer::withTrashed()->where(['question_id' => $id, 'user_id' => $this->user->id()])->first();
+//
+//        $created = false;
+//        if (!$answer) {
+//            $answer = $this->createAnswer($id, $request->all());
+//            $created=true;
+//        }
+//
+//
+//        $this->addFile('images', $request->all(), $answer->id);
+////        $this->addFile('images', $request->all(), $id);
+//
+//        if(!$created){
+//            UserQuestion::where(['user_id' => $this->user->id(), 'question_id' => $id])->update(['status' => 'Not checked']);
+//            NotificationsController::answer_updated(1, $this->user->id(), $answer->question_id);
+//        }
+//
+//
+//        Session::flash('success', 'Images added!');
+//
+//        return redirect("user/question/answer/$id/edit");
+//    }
+//
+//    //jnjel
+//    public function addVideos($id,Request $request)
+//    {
+//        if ($this->user->user()->status != 'gold')
+//            return back()->with('error', 'You have no privilege.');
+////        $this->validate($request,[
+////            'videos.*' =>  ' mimes:video/x-flv,
+////                             video/mp4,
+////                             application/x-mpegURL,
+////                             video/MP2T,
+////                             video/3gpp,
+////                             video/quicktime,
+////                             video/x-msvideo,
+////                             video/x-ms-wmv
+////                              | max:30000000000'
+////        ]);
+////        dd($request->all());
+//
+//        $answer = Answer::withTrashed()->where(['question_id' => $id, 'user_id' => $this->user->id()])->first();
+//
+//        $created =false;
+//        if (!$answer) {
+//            $answer = $this->createAnswer($id, $request->all());
+//            $created=true;
+//        }
+//
+//        $this->addFile('videos', $request->all(), $answer->id);
+//
+//        if(!$created){
+//            UserQuestion::where(['user_id' => $this->user->id(), 'question_id' => $id])->update(['status' => 'Not checked']);
+//            NotificationsController::answer_updated(1, $this->user->id(), $answer->question_id);
+//        }
+//
+//        Session::flash('success', 'Videos added!');
+//
+//        return redirect("user/question/answer/$id/edit");
+//    }
 
     public function addFile($type, $request, $id)
     {
-//        dd($request);
-//        set_time_limit(0);
-
         $type == 'images' ? $destPath = 'images' : $destPath = 'videos';
         $removed = explode('?', $request['removed']);
         $i = 0;

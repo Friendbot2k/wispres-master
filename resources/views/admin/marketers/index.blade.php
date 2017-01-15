@@ -41,7 +41,7 @@
                         <a href="{{ url('/admin/marketers/' . $item->id) }}" class="btn btn-success btn-xs" title="View Marketer"><span
                                     class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
                         @if($item->deleted_at)
-                            <a href="{{ url('/admin/marketers/activate' . $item->id) }}" class="btn btn-warning btn-xs" title="Activate Marketer"><span
+                            <a href="{{ url('/admin/marketers/activate/' . $item->id) }}" class="btn btn-warning btn-xs" title="Activate Marketer"><span
                                         class="glyphicon glyphicon-ban-circle" aria-hidden="true"/></a>
 
                         @endif

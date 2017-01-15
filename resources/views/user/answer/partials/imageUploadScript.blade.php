@@ -23,9 +23,6 @@
             if (file.type.indexOf("image") == 0) {
                 var reader = new FileReader();
                 reader.onload = function (e) {
-                    console.log(e.loaded);
-//                    var loaded = file.getLoaded();
-                    console.log(loaded);
                     var a = '<div class="block-for-photo">'+
                             '<button  type="button" class="remove-image" name="' + file.name + '" value="' + file.name + '"><i class="fa fa-times" aria-hidden="true"></i></button>'+
                             '<img src="' + e.target.result + '" alt="">'+

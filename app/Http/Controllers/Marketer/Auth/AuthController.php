@@ -6,6 +6,7 @@ use App\Models\Marketer;
 use App\Models\Commission;
 use App\User;
 use Carbon\Carbon;
+use Mockery\CountValidator\Exception;
 use Validator;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -13,6 +14,7 @@ use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use App\Http\Controllers\NotificationsController;
 use Mail,Response;
+use Exeption;
 
 
 class AuthController extends Controller
@@ -112,15 +114,21 @@ class AuthController extends Controller
         ]);
 
         Commission::create(['marketer_id' => $marketer->id]);
-
-        Mail::send('emails.promoCode', ['code' => "$promo_code"], function ($message) use ($marketer) {
-            $message->from('sona.khachatryan1995@gmail.com', 'Simple');
-            $message->to($marketer->email, "$marketer->name")->subject('Welcome!');
-        });
+        try{
+            Mail::send('emails.promoCode', ['code' => "$promo_code"], function ($message) use ($marketer) {
+                $message->from('sona.khachatryan1995@gmail.com', 'Simple');
+                $message->to($marketer->email, "$marketer->name")->subject('Welcome!');
+            });
+        }catch (Exception $e){
+            User::withTrashed()->find($marketer->id)->forceDelete();
+            if($e->getCode() == 554)
+                return view('marketer.auth.auth')->with('email_error', 'Email doesn\'t exists.');
+            else
+                return back()->with('error', 'Something went wrong');
+        }
         
         
         // Clear the shopping cart, write to database, send notifications, etc.
-
         NotificationsController::marketer_registers(1, $marketer);
         
         return $marketer;

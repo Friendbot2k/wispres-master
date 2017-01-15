@@ -27,8 +27,8 @@ class PaypalController extends Controller
             config('services.paypal.secret'));
 
         $this->_apiContext->setConfig(array(
-            'mode' => 'sandbox',
-            'service.EndPoint' => 'https://api.sandbox.paypal.com',
+            'mode' => 'live',
+            'service.EndPoint' => 'https://api.paypal.com/nvp',
             'http.ConnectionTimeOut' => 30,
             'log.LogEnabled' => true,
             'log.FileName' => storage_path('logs/paypal.log'),
@@ -45,9 +45,9 @@ class PaypalController extends Controller
         $amount->setCurrency('USD');
         
         if ($status == 'gold')
-            $amount->setTotal(10);
+            $amount->setTotal(499.99);
         else
-            $amount->setTotal(5);
+            $amount->setTotal(199.99);
 
         $transaction = PayPal::Transaction();
         $transaction->setAmount($amount);
@@ -86,15 +86,15 @@ class PaypalController extends Controller
 
         $user = User::withTrashed()->where("payment_id",$id)->first();
 
-        $token = csrf_token();
-        $url = "http://keepingitsimple.app/approve-account/$user->id/$token";
-        UserActivation::create(['user_id' => $user->id,'token' =>$token]);
-        
-        Mail::send('emails.confirm', array('url' => "$url"), function($message) use ($user)
-        {
-            $message->from('sona.khachatryan1995@gmail.com', 'Simple');
-            $message->to($user->email, "$user->name")->subject('Confirmation!');
-        });
+//        $token = csrf_token();
+//        $url = "http://keepingitsimple.app/approve-account/$user->id/$token";
+//        UserActivation::create(['user_id' => $user->id,'token' =>$token]);
+//
+//        Mail::send('emails.confirm', array('url' => "$url"), function($message) use ($user)
+//        {
+//            $message->from('sona.khachatryan1995@gmail.com', 'Simple');
+//            $message->to($user->email, "$user->name")->subject('Confirmation!');
+//        });
 
         if(isset($user->promo_code)) {
             $marketer = Marketer::where('promo_code',$user->promo_code)->first();
@@ -115,7 +115,7 @@ class PaypalController extends Controller
 
         // Thank the user for the purchase
         NotificationsController::user_registers(1, $user->id);
-        return view('auth/login')->with('success','Your registration completed, please check your email to activate account.');
+        return view('auth/register')->with('success','Your registration completed, please check your email to activate account.');
     }
 
     public function getCancel($id,Request $request)

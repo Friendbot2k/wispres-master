@@ -5,7 +5,7 @@
     <div class="back">
         <div class="all-content">
             <div class="back-content">
-                <h1>Are you a marketeR?</h1>
+                <h1>Do you share our desire to collect human wisdom?  Help us find people who are uniquely suited to impart it.</h1>
                <a href="{{ url('marketer/auth') }}"> <button>join us</button></a>
             </div>
         </div>
@@ -14,7 +14,7 @@
     <div class="content">
         <div class="strategy-title">
             <div class="strategy-title-words">
-                <h2>Our strategy</h2>
+                <h2>Help Us Discover Wisdom</h2>
             </div>
         </div>
 
@@ -23,12 +23,12 @@
             <div class="strategy-content">
                 <div class="strategy-content">
                     <div class="strategy-top">
-                        <img src="{{ url('images/inner-images/strategy-top.png') }}" alt="strategy">
+                        <img style="width: 571px; height: 355px;" src="{{ url('images/inner-images/Lake-Landscape.jpg') }}" alt="strategy">
                         <p>{{ $record->right_text }}</p>
 
                     </div>
                     <div class="strategy-bottom">
-                        <img src="{{ url('images/inner-images/strategy-bottom.png') }}" alt="strategy">
+                        <img style="width: 571px; height: 355px;" src="{{ url('images/inner-images/Wildlife.jpg') }}" alt="strategy">
                         <p>{{ $record->left_text }}</p>
                     </div>
                 </div>

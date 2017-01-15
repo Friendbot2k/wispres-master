@@ -21,6 +21,11 @@ class CreateUsersTable extends Migration
             $table->string('alias');
             $table->enum('status', ['gold', 'silver']);
             $table->string('payment_id');
+            $table->string('facebook')->nullable();
+            $table->string('twitter')->nullable();
+            $table->string('google')->nullable();
+            $table->string('pinterest')->nullable();
+            $table->text('about')->nullable();
             $table->integer('marketer_id')->unsigned();
             $table->foreign('marketer_id')
                 ->references('id')

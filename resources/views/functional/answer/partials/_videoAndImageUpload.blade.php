@@ -1,39 +1,39 @@
 <div class="tex">
-    @if(isset($answer))
-    <h1> Videos </h1>
-    <table class="table table-bordered table-striped table-hover">
-        <thead>
-        <tr>
-            <th>S.No</th>
-            <th> Name </th>
-            <th>Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        {{-- */$x=0;/* --}}
-        @foreach($answer->videos as $item)
-            {{-- */$x++;/* --}}
-            <tr>
-                <td>{{ $x }}</td>
-                <td>{{ $item->url }}</td>
-                <td>
-                    {!! Form::open([
-                               'method'=>'DELETE',
-                               'url' => ['/user/video', $item->id],
-                               'style' => 'display:inline'
-                           ]) !!}
+         @if(isset($answer))
+            <h1> Videos </h1>
+            <table class="table table-bordered table-striped table-hover">
+                <thead>
+                <tr>
+                    <th>S.No</th>
+                    <th> Name </th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{-- */$x=0;/* --}}
+                @foreach($answer->videos as $item)
+                    {{-- */$x++;/* --}}
+                    <tr>
+                        <td>{{ $x }}</td>
+                        <td>{{ $item->url }}</td>
+                        <td>
+                            {!! Form::open([
+                                       'method'=>'DELETE',
+                                       'url' => ['/user/video', $item->id],
+                                       'style' => 'display:inline'
+                                   ]) !!}
 
-                    <button type='button' data="{{csrf_token()}}" value="{{ $item->id }}"
-                            class='delete btn btn-danger btn-xs' title='Delete Video'>
-                        <span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete Video"/>
-                    </button>
-                    <button class="button-delete" hidden type="submit"></button>
-                    {!! Form::close() !!}
-                </td>
-            </tr>
-        @endforeach
-        </tbody>
-    </table>
+                            <button type='button' data="{{csrf_token()}}" value="{{ $item->id }}"
+                                    class='delete btn btn-danger btn-xs' title='Delete Video'>
+                                <span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete Video"/>
+                            </button>
+                            <button class="button-delete" hidden type="submit"></button>
+                            {!! Form::close() !!}
+                        </td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
 
 @endif
 

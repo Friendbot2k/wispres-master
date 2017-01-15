@@ -14,7 +14,7 @@ class CreateAnswersTable extends Migration
     {
         Schema::create('answers', function (Blueprint $table) {
             $table->increments('id');
-            $table->text('content');
+            $table->text('content')->nullable();
             $table->integer('question_id')->unsigned();
             $table->foreign('question_id')
                 ->references('id')
@@ -28,6 +28,7 @@ class CreateAnswersTable extends Migration
                 ->onDelete('cascade')
                 ->unUpdate('cascade');
             $table->boolean('alias')->default(false);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -15,13 +15,17 @@
 
             <div class="all-content">
                 <div class="registration-forms">
+                    <div id="success">
+                        @include('layouts.messages')
+                    </div>
                     <form method="POST" action="{{ url('/register') }}" id="register">
 
                         <div class="left-block-forms">
                             {{ csrf_field() }}
-                            <div class="input-blocks {{ $errors->has('name') ? ' has-error' : '' }}" >
+                            <div class="input-blocks {{ $errors->has('name') ? ' has-error' : '' }}">
                                 <label for="name-user">Name</label>
-                                <input type="text" id="name-user" placeholder="Name" lian="22" data-value="Name" name="name" {{--value="{{ old('name') }}"--}}>
+                                <input type="text" id="name-user" placeholder="Name" lian="22" data-value="Name"
+                                       name="name" value="{{ old('name') }}">
 
                                 @if ($errors->has('name'))
                                     <span class="help-block">
@@ -30,13 +34,18 @@
                                 @endif
                             </div>
 
-                            <div class="input-blocks {{ $errors->has('email') ? ' has-error' : '' }}">
+                            <div class="input-blocks {{ ($errors->has('email')  || isset($email_error)  )? ' has-error': '' }}">
                                 <label for="email-user">E-Mail</label>
-                                <input type="email" id="email-user" placeholder="E-Mail" data-value="E-Mail" name="email" {{--value="{{ old('email') }}"--}}>
+                                <input type="email" id="email-user" placeholder="E-Mail" data-value="E-Mail"
+                                       name="email" value="{{ old('email') }}">
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @elseif(isset($email_error))
+                                    <span class="help-block">
+                                        <strong>{{ $email_error }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -44,7 +53,8 @@
 
                             <div class="input-blocks {{ $errors->has('password') ? ' has-error' : '' }}">
                                 <label for="password-user">Password</label>
-                                <input type="password" id="password-user" placeholder="Password" data-value="Password" name="password">
+                                <input type="password" id="password-user" placeholder="Password" data-value="Password"
+                                       name="password">
 
                                 @if ($errors->has('password'))
                                     <span class="help-block">
@@ -69,7 +79,7 @@
                             <div class="input-blocks {{ $errors->has('promo_code') ? ' has-error' : '' }} ">
                                 <label for="promo_code">Promo Code</label>
                                 <input type="text" id="promo_code" placeholder="Promo Code"
-                                       data-value="Promo Code" name="promo_code">
+                                       data-value="Promo Code" name="promo_code" value="{{ old('promo_code') }}">
 
                                 @if ($errors->has('promo_code'))
                                     <span class="help-block">
@@ -124,7 +134,7 @@
 
         </div>
 
-        <div class="transperent" id="modal" >
+        <div class="transperent" id="modal">
 
             <div class="all-content">
                 <div class="pop-up ">
@@ -140,17 +150,14 @@
                             <input type="text" placeholder="Card number" class="card-number" id="card-number1">
 
 
-
-
-
                             <div class="pop-row ">
 
 
                                 <div class="pop-sections">
-                                    <label > Expiries</label>
+                                    <label> Expiries</label>
 
                                     <div>
-                                        <select  id="month" onchange="" size="1" class="card_expiry_month">
+                                        <select id="month" onchange="" size="1" class="card_expiry_month">
                                             <option value="01" selected="selected">January</option>
                                             <option value="02">February</option>
                                             <option value="03">March</option>
@@ -165,14 +172,15 @@
                                             <option value="12">December</option>
                                         </select>
 
-                                        <input id="year_start" class="card_expiry_year" type="number" min="2016" max="2036"/>
+                                        <input id="year_start" class="card_expiry_year" type="number" min="2016"
+                                               max="2036"/>
                                     </div>
                                 </div>
 
                                 <div>
                                     <label for="digits" class="digits-label">CVC</label>
                                     <div>
-                                        <input type="text" placeholder="3 digits" id="digits" class="card_cvc" >
+                                        <input type="text" placeholder="3 digits" id="digits" class="card_cvc">
                                     </div>
                                 </div>
                             </div>
@@ -185,7 +193,6 @@
                         </form>
 
                     </div>
-
 
 
                 </div>
@@ -205,16 +212,16 @@
     <script type="text/javascript">
         Stripe.setPublishableKey('{{env('STRIPE_KEY')}}');
 
-        $('#checkbox1').on('change',function(){
-            if($(this).is(':checked'))
+        $('#checkbox1').on('change', function () {
+            if ($(this).is(':checked'))
                 $('#status').val('gold');
             else
                 $('#status').val('silver');
             console.log($('#status').val());
         })
 
-        $('#checkbox2').on('change',function(){
-            if($(this).is(':checked'))
+        $('#checkbox2').on('change', function () {
+            if ($(this).is(':checked'))
                 $('#payment').val('card');
             else
                 $('#payment').val('paypal');
@@ -222,19 +229,18 @@
 
         var button_click = false;
         $('#modal-button').on('click', function () {
-            $('#modal').attr('class','hidden');
+            $('#modal').attr('class', 'hidden');
             button_click = true;
-                    stripe();
-                })
-         var ban ;
-        $("#month").on("click",function () {
+            stripe();
+        })
+        var ban;
+        $("#month").on("click", function () {
             var selElementVal = $(this).find(":selected").attr('value');
             ban = selElementVal;
         })
 
         $('#modal').on('hidden', function () {
-            if(!button_click)
-            {
+            if (!button_click) {
                 $('#payment').val('paypal');
                 $("#checkbox2").prop("checked", false);
             }

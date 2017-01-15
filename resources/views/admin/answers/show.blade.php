@@ -42,15 +42,15 @@
     @if(count($answer->images)>0)
         <h2>Images</h2>
         <hr/>
-        <section class="center slider">
+        <section class="image-show center slider">
             @foreach($answer->images as $image)
                 <div><img src="{{ url('images/' . $image->url) }}"></div>
             @endforeach
         </section>
 
-        <div class="slider-nav">
+        <div class="image1 slider-nav">
             @foreach($answer->images as $image)
-                <div class="slider-img"><img src="{{ url('images/' . $image->url) }}"></div>
+                <div class="slider-img h100"><img src="{{ url('images/' . $image->url) }}"></div>
             @endforeach
         </div>
     @endif
@@ -58,13 +58,13 @@
     @if(count($answer->videos)>0)
         <h2>Videos</h2>
         <hr/>
-        <section class="center slider">
+        <section class="video-show center slider">
             @foreach($answer->videos as $video)
                 <video controls src="{{ url('videos',$video->url) }}" allowfullscreen></video>
             @endforeach
         </section>
 
-        <div class="slider-nav">
+        <div class="video slider-nav">
             @foreach($answer->videos as $video)
                 <video src="{{ url('videos',$video->url) }}" allowfullscreen></video>
             @endforeach
@@ -76,19 +76,61 @@
 @section('script')
     <script>
 
-        $('.slider').slick({
+        $('.image-show').slick({
             slidesToShow: 1,
             slidesToScroll: 1,
             arrows: false,
             fade: true,
-            asNavFor: '.slider-nav'
+            asNavFor: '.image1'
         });
 
-        $('.slider-nav').slick({
+        $('.image1').slick({
             arrows: false,
             slidesToShow: 3,
             slidesToScroll: 1,
-            asNavFor: '.slider',
+            asNavFor: '.image-show',
+            dots: false,
+            centerMode: true,
+            focusOnSelect: true,
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: "unslick"
+                },
+                {
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 2
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }
+                // You can unslick at a given breakpoint now by adding:
+                // settings: "unslick"
+                // instead of a settings object
+            ]
+        });
+
+
+        $('.video-show').slick({
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrows: false,
+            fade: true,
+            asNavFor: '.video'
+        });
+
+        $('.video').slick({
+            arrows: false,
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            asNavFor: '.video-show',
             dots: false,
             centerMode: true,
             focusOnSelect: true,

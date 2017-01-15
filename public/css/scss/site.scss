@@ -1,4 +1,4 @@
-//
+
 // Site css
 // --------------------------------------------
 
@@ -253,18 +253,31 @@ body > section {
 .home-page {
   .back {
     width: 100%;
-    height: 686px;
+    height: 802px;
     background-image: url("../../images/inner-images/back1.png");
-    background-attachment: fixed;
+    // background-attachment: fixed;
     background-repeat: no-repeat;
 
     .back-content {
       width: 732px;
       position: absolute;
-      top: 38.6%;
-      border: 3px solid #7c9551;
-      right: 17%;
+      top: 15%;
+      right: 5%;
+      // top: 38.6%;
+      // border: 3px solid #7c9551;
+      // right: 17%;
       padding: 27px 50px 30px 25px;
+
+      // .back-content-textbox {
+      //   width: 732px;
+      //   position: absolute; 
+      //   top: 175%; 
+      //   right: 110%; 
+      //   border: 3px solid #7c9551;
+      //   padding: 27px 50px 30px 25px;
+      //   background: #f7e6da;
+      // }
+
 
       h1 {
         font-family: NirmalaUI-Bold;
@@ -281,364 +294,330 @@ body > section {
       }
 
     }
+    //IDs for homepage
+    #treeimg-impartwis {
+      height: 225px; 
+      width: 225px; 
+      z-index: 2; 
+      border: 3px solid #7c9551; 
+      border-radius: 100%;
+    }
+    
+    #treeimg-searchwis {
+      height: 225px; 
+      width: 225px; 
+      z-index: 2; 
+      border: 3px solid #7c9551; 
+      border-radius: 100%;
+    }
+    
+    #treeimg-discovwis {
+      height: 225px; 
+      width: 225px; 
+      z-index: 2; 
+      position: absolute; 
+      border: 3px solid #7c9551;
+      border-radius: 100%;
 
+    }
+
+    #howitworksvid {
+      right: 20%;
+      margin-left: 50%;
+      margin-top: 25%; 
+      position: absolute;
+    }
+
+    #whatiswispresvid {
+      right: 20%; 
+      margin-left: 150%; 
+      margin-top: 10%; 
+      position: absolute;
+    }
+
+    #homepagetextbox {
+      width: 732px; 
+      position: absolute; 
+      top: 175%; 
+      right: 110%; 
+      border: 3px solid #7c9551; 
+      padding: 27px 50px 30px 25px; 
+      background: #f7e6da;
+    }
+
+    #playlist {
+    display:table;
+    }
+    #playlist li{
+        cursor:pointer;
+        padding:8px;
+    }
+    #playlist li:hover{
+        color:blue;                        
+    }
+    #videoarea {
+        float:left;
+        width:640px;
+        height:480px;
+        margin:10px;    
+        border:1px solid silver;
+    }​
   }
 
-  .content {
-    h2 {
-      font-family: NirmalaUI;
-      font-size: 36px;
-      color: #5f6563;
-      padding: 38px 0 48px 0;
-    }
-
-    .service {
-      background: #eceee6;
-      height: 500px;
-
-      .service-content {
-        position: relative;
-        margin: 0 auto;
-        float: none;
-        width: 1320px;
-        padding: 50px 65px;
-        background: #ffffff;
-        @include clear();
-
-        > .block {
-          width: 380px;
-          height: 250px;
-          margin: 0 0 0 25px;
-          position: relative;
-          padding: 0;
-
-          &:nth-child(1) {
-            margin: 0;
-            background-image: url("../../images/inner-images/service-first.png");
-
-          }
-
-          &:nth-child(2) {
-
-            background-image: url("../../images/inner-images/servise-second.png");
-
-          }
-
-          &:nth-child(3) {
-
-            background-image: url("../../images/inner-images/service-third.png");
-
-          }
-
-          > .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 100%;
-            background: rgba(0, 0, 0, 0.55);
-            border: 1px solid #ffffff;
-            display: none;
-            .border-hover {
-              border: 1px solid #ffffff;
-              width: 80%;
-              height: 80%;
-              position: absolute;
-              top: 10%;
-              left: 10%;
-
-              .bottom-block {
-                position: absolute;
-                bottom: 10%;
-                left: 35.7%;
-                display: block;
-                text-decoration: none;
-                text-align: center;
-                font-family: NirmalaUI;
-                font-size: 24px;
-                color: darkgray;
-
-              }
-
-              .top-block {
-
-                position: absolute;
-                top: 30%;
-                left: 5%;
-                right: 5%;
-                display: block;
-                text-decoration: none;
-                text-align: center;
-                font-family: NirmalaUI;
-                font-size: 20px;
-                color: #ffffff;
-
-              }
-
-            }
-
-          }
-
-          h4 {
-            font-family: NirmalaUI-Bold;
-            font-size: 33px;
-            color: #5f6563;
-            text-align: center;
-            z-index: 10;
-            position: relative;
-            top: 30px;
-
-          }
-
-        }
-      }
-
-    }
-
-    .about {
-      text-align: center;
-
-      .about-content {
-        background-image: url(../../images/inner-images/about.png);
-        background-size: 100% 100%;
-        background-repeat: no-repeat;
-        width: 1200px;
-        height: 530px;
-        position: relative;
-        margin: 0 auto;
-        float: none;
-        padding: 109px 0 0 420px;
-
-        p {
-          display: block;
-          font-family: NirmalaUI;
-          font-size: 31px;
-          color: #69706e;
-          text-align: left;
-          line-height: 61px;
-        }
-
-        a {
-
-          font-family: NirmalaUI;
-          font-size: 23px;
-          color: #5f6563;
-          position: absolute;
-          right: 56px;
-          bottom: 50px;
-          text-decoration: none;
-
-        }
-
-      }
-    }
-
-    .test {
-      margin: 70px 0 0 0;
-
-      .test-title {
-        width: 100%;
-        height: 35px;
-        background: #d5ddc9;
-        position: relative;
-
-        .test-title-cont {
-          width: 1200px;
-          margin: 0 auto;
-          text-align: left;
-
-          > h2 {
-            background: #ffffff;
-            position: absolute;
-            padding: 0px 5px 30px 5px;
-
-          }
-
-        }
-      }
-
-      .test-content {
-        @include clear();
-        position: relative;
-        margin: 12px 0 0 0;
-        height: 500px;
-
-        .test-cont {
-          height: 100%;
-          width: 100%;
-          @include clear();
-          > div {
-            height: 100%;
-          }
-
-          > .left-block {
-            width: 56%;
-            background-color: #d5ddc9;
-            float: left;
-            padding: 22px 18px 25px 0;
-            text-align: right;
-
-            .test-video {
-              width: 695px;
-              height: 454px;
-              display: inline-block;
-              float: none;
-              margin: 0;
-              padding: 0;
-
-              video {
-
-                width: 100%;
-                height: 100%;
-                position: relative;
-              }
-
-            }
-          }
-
-          > .right-block {
-            width: 44%;
-            background-color: #ededed;
-            float: right;
-            padding: 22px 0 25px 18px;
-            text-align: left;
-
-            .test-message {
-              width: 475px;
-              height: 454px;
-              display: inline-block;
-              float: none;
-              margin: 0;
-              padding: 0;
-
-              .massage-block {
-
-                width: 475px;
-                height: 454px;
-                background: #f9f9f9;
-
-                .messages {
-                  height: 375px;
-                  background: #f9f9f9;
-                  overflow-y: scroll;
-
-                  &::-webkit-scrollbar {
-                    width: 15px;
-
-                  }
-
-                  &::-webkit-scrollbar-track {
-
-                    border-radius: 5px;
-                    width: 15px;
-                    background: #ffffff;
-                  }
-
-                  &::-webkit-scrollbar-thumb {
-                    border-radius: 5px;
-                    height: 62px;
-                    width: 15px;
-                    background: #bdc3b7;
-                  }
-
-                  .message {
-                    width: 427px;
-                    height: 92px;
-                    border: 1px solid #bdc3b7;
-                    border-radius: 50px 10px 10px 50px;
-                    position: relative;
-                    left: 10px;
-                    top: 28px;
-                    margin-bottom: 35px;
-
-                    img {
-
-                      position: absolute;
-                      left: -5px;
-                      top: -3px;
-                    }
-
-                    p {
-
-                      font-family: NirmalaUI;
-                      font-size: 12px;
-                      color: #9ca296;
-                      padding-left: 24%;
-                      line-height: 1.6;
-                    }
-
-                    .message-text {
-                      padding-left: 27%;
-                    }
-
-                    .massage-author {
-
-                      padding-right: 23px;
-                    }
-
-                  }
-
-                }
-
-                .add {
-                  position: relative;
-
-                  input {
-                    width: 411px;
-                    height: 34px;
-                    border: 1px solid #bdc3b7;
-                    border-radius: 5px;
-                    margin: 20px;
-
-                  }
-
-                  input::-webkit-input-placeholder {
-                    color: #bdc3b7;
-                    font-family: NirmalaUI;
-                    font-size: 16px;
-                    padding-left: 17px;
-                  }
-
-                  input::-moz-placeholder { /* Firefox 19+ */
-                    color: #bdc3b7;
-                    font-family: NirmalaUI;
-                    font-size: 16px;
-                    padding-left: 17px;
-                  }
-
-                  input:-ms-input-placeholder {
-                    color: #bdc3b7;
-                    font-family: NirmalaUI;
-                    font-size: 16px;
-                    padding-left: 17px;
-                  }
-
-                  button {
-                    width: 73px;
-                    height: 33px;
-                    border: 1px solid transparent;
-                    border-radius: 5px;
-                    background: #bdc3b7;
-                    position: absolute;
-                    right: 9%;
-                    top: 28%;
-                    font-family: NirmalaUI;
-                    font-size: 16px;
-                    color: #ffffff;
-                  }
-
-                }
-
-              }
-
-            }
-          }
-        }
-      }
-
-    }
-
-  }
+
+
+  // .content {
+  //   h2 {
+  //     font-family: NirmalaUI;
+  //     font-size: 36px;
+  //     color: #5f6563;
+  //     padding: 38px 0 48px 0;
+  //   }
+
+  //   .about {
+  //     text-align: center;
+
+  //     .about-content {
+  //       background-image: url(../../images/inner-images/aboutusimg.png);
+  //       background-size: 100% 100%;
+  //       background-repeat: no-repeat;
+  //       width: 1200px;
+  //       height: 530px;
+  //       position: relative;
+  //       margin: 0 auto;
+  //       float: none;
+  //       padding: 109px 0 0 420px;
+
+  //       p {
+  //         display: block;
+  //         font-family: NirmalaUI;
+  //         font-size: 31px;
+  //         color: #69706e;
+  //         text-align: left;
+  //         line-height: 61px;
+  //       }
+
+  //       a {
+
+  //         font-family: NirmalaUI;
+  //         font-size: 23px;
+  //         color: #5f6563;
+  //         position: absolute;
+  //         right: 56px;
+  //         bottom: 50px;
+  //         text-decoration: none;
+
+  //       }
+
+  //     }
+  //   }
+
+  //   .test {
+  //     margin: 70px 0 0 0;
+
+  //     .test-title {
+  //       width: 100%;
+  //       height: 35px;
+  //       background: #d5ddc9;
+  //       position: relative;
+
+  //       .test-title-cont {
+  //         width: 1200px;
+  //         margin: 0 auto;
+  //         text-align: left;
+
+  //         > h2 {
+  //           background: #ffffff;
+  //           position: absolute;
+  //           padding: 0px 5px 30px 5px;
+
+  //         }
+
+  //       }
+  //     }
+
+  //     .test-content {
+  //       @include clear();
+  //       position: relative;
+  //       margin: 12px 0 0 0;
+  //       height: 500px;
+
+  //       .test-cont {
+  //         height: 100%;
+  //         width: 100%;
+  //         @include clear();
+  //         > div {
+  //           height: 100%;
+  //         }
+
+  //         > .left-block {
+  //           width: 56%;
+  //           background-color: #d5ddc9;
+  //           float: left;
+  //           padding: 22px 18px 25px 0;
+  //           text-align: right;
+
+  //           .test-video {
+  //             width: 695px;
+  //             height: 454px;
+  //             display: inline-block;
+  //             float: none;
+  //             margin: 0;
+  //             padding: 0;
+
+  //             video {
+
+  //               width: 100%;
+  //               height: 100%;
+  //               position: relative;
+  //             }
+
+  //           }
+  //         }
+
+  //         > .right-block {
+  //           width: 44%;
+  //           background-color: #ededed;
+  //           float: right;
+  //           padding: 22px 0 25px 18px;
+  //           text-align: left;
+
+  //           .test-message {
+  //             width: 475px;
+  //             height: 454px;
+  //             display: inline-block;
+  //             float: none;
+  //             margin: 0;
+  //             padding: 0;
+
+  //             .massage-block {
+
+  //               width: 475px;
+  //               height: 454px;
+  //               background: #f9f9f9;
+
+  //               .messages {
+  //                 height: 375px;
+  //                 background: #f9f9f9;
+  //                 overflow-y: scroll;
+
+  //                 &::-webkit-scrollbar {
+  //                   width: 15px;
+
+  //                 }
+
+  //                 &::-webkit-scrollbar-track {
+
+  //                   border-radius: 5px;
+  //                   width: 15px;
+  //                   background: #ffffff;
+  //                 }
+
+  //                 &::-webkit-scrollbar-thumb {
+  //                   border-radius: 5px;
+  //                   height: 62px;
+  //                   width: 15px;
+  //                   background: #bdc3b7;
+  //                 }
+
+  //                 .message {
+  //                   width: 427px;
+  //                   height: 92px;
+  //                   border: 1px solid #bdc3b7;
+  //                   border-radius: 50px 10px 10px 50px;
+  //                   position: relative;
+  //                   left: 10px;
+  //                   top: 28px;
+  //                   margin-bottom: 35px;
+
+  //                   img {
+
+  //                     position: absolute;
+  //                     left: -5px;
+  //                     top: -3px;
+  //                   }
+
+  //                   p {
+
+  //                     font-family: NirmalaUI;
+  //                     font-size: 12px;
+  //                     color: #9ca296;
+  //                     padding-left: 24%;
+  //                     line-height: 1.6;
+  //                   }
+
+  //                   .message-text {
+  //                     padding-left: 27%;
+  //                   }
+
+  //                   .massage-author {
+
+  //                     padding-right: 23px;
+  //                   }
+
+  //                 }
+
+  //               }
+
+  //               .add {
+  //                 position: relative;
+
+  //                 input {
+  //                   width: 411px;
+  //                   height: 34px;
+  //                   border: 1px solid #bdc3b7;
+  //                   border-radius: 5px;
+  //                   margin: 20px;
+
+  //                 }
+
+  //                 input::-webkit-input-placeholder {
+  //                   color: #bdc3b7;
+  //                   font-family: NirmalaUI;
+  //                   font-size: 16px;
+  //                   padding-left: 17px;
+  //                 }
+
+  //                 input::-moz-placeholder { /* Firefox 19+ */
+  //                   color: #bdc3b7;
+  //                   font-family: NirmalaUI;
+  //                   font-size: 16px;
+  //                   padding-left: 17px;
+  //                 }
+
+  //                 input:-ms-input-placeholder {
+  //                   color: #bdc3b7;
+  //                   font-family: NirmalaUI;
+  //                   font-size: 16px;
+  //                   padding-left: 17px;
+  //                 }
+
+  //                 button {
+  //                   width: 73px;
+  //                   height: 33px;
+  //                   border: 1px solid transparent;
+  //                   border-radius: 5px;
+  //                   background: #bdc3b7;
+  //                   position: absolute;
+  //                   right: 9%;
+  //                   top: 28%;
+  //                   font-family: NirmalaUI;
+  //                   font-size: 16px;
+  //                   color: #ffffff;
+  //                 }
+
+  //               }
+
+  //             }
+
+  //           }
+  //         }
+  //       }
+  //     }
+
+  //   }
+
+  // }
 
 }
 
@@ -651,9 +630,11 @@ body > section {
   }
   .back {
     width: 100%;
-    height: 576px;
-    background-image: url(../../images/inner-images/about-back.png);
-    background-size: 100% 100%;
+    height: 700px;
+    background-image: url(../../images/inner-images/aboutusimg.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+
 
     .all-content {
 
@@ -710,16 +691,20 @@ body > section {
 
       .we-content {
         width: 100%;
-        height: 380px;
+        height: 400px;
         background-image: url("../../images/inner-images/weback.png");
         background-size: 100% 100%;
+        // background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
 
         .we-block-left {
           width: 600px;
-          height: 380px;
+          height: 400px;
           float: left;
-          background-image: url("../../images/inner-images/we.png");
+          background-image: url("../../images/inner-images/tree-marketer.png");
           position: relative;
+          background-repeat: no-repeat;
 
           .block-down {
 
@@ -877,7 +862,7 @@ body > section {
         margin-top: 50px;
 
         .team-block-top, .team-block-bottom {
-          height: 190px;
+          height: 400px;
 
           div {
             position: relative;
@@ -889,7 +874,7 @@ body > section {
             img {
 
               position: absolute;
-              height: 100%;
+              height: 45%;
             }
 
           }
@@ -1370,7 +1355,6 @@ body > section {
           color: #a9a9a9;
         }
 
-
   }
 
       .link-contract{
@@ -1493,7 +1477,216 @@ body > section {
 
 }
 
+.registration-marketer {
 
+  .all-content {
+
+    width: 1200px;
+    position: relative;
+    margin: 0 auto;
+  }
+
+  h2 {
+
+    font-size: 36px;
+    font-family: MicrosoftPhagsPa-Bold;
+    color: #6a6f6d;
+    text-align: center;
+    padding: 68px 0 50px 0;
+  }
+
+  .registration-title {
+    width: 100%;
+    height: 26px;
+    background: #a0b59f;
+    margin: 70px 0 50px 0;
+
+    .registration-title-words {
+
+      position: relative;
+      margin: 0 auto;
+      width: 400px;
+      height: 42px;
+      background: #ffffff;
+      top: -7px;
+      left: -400px;
+
+      h2 {
+        padding: 0;
+      }
+
+    }
+
+  }
+
+  .registration-forms {
+    @include clear();
+
+    .left-block-forms  ,.right-block-forms-out{
+
+      width: 750px;
+      float: left;
+      font-family: 'MicrosoftPhagsPa';
+
+      .form-title-sign{
+
+        font-size: 32px;
+        color: #b0c694;
+        margin: 0;
+      }
+
+
+      input,#contract-label {
+
+        width: 100%;
+        height: 50px;
+        border: none;
+        border-bottom: 1px solid #969696;
+        font-size: 24px;
+        color: #6c6c6c;
+        padding-left: 20px;
+      }
+
+      label {
+
+        font-size: 18px;
+        color: #929292;
+        padding-left: 25px;
+        display: none;
+
+
+      }
+
+
+      .input-blocks {
+        margin-top: 50px;
+
+        #contract-label{
+          display: inline-block;
+          color: #a9a9a9;
+        }
+
+  }
+
+      .link-contract{
+
+        font-size: 16px;
+        text-decoration: none;
+        color: #b0c694;
+        position: relative;
+        top: 125px;
+
+
+      }
+
+      input:focus {
+        border-bottom: 1px solid #8ea077;
+
+      }
+
+      .block-label {
+
+        display: inline-block !important;
+      }
+
+    }
+
+    #forms-out-register{
+      padding: 0 0 0 70px;
+    }
+
+    #forms-out {
+
+      padding: 0px;
+
+      #submit-login{
+        margin: 99px 0 0 0;
+      }
+    }
+
+
+
+    .right-block-forms {
+
+      width: 400px;
+      float: right;
+      padding: 140px 0 0 70px;
+
+      h3 {
+        font-family: 'MicrosoftPhagsPa';
+        font-size: 30px;
+        color: #a0b59f;
+        line-height: 33px;
+        margin-bottom: 40px;
+      }
+
+      p {
+        font-family: 'MicrosoftPhagsPa';
+        font-size: 24px;
+        color: #6c6c6c;
+        margin-bottom: 70px;
+
+        .gold {
+
+          padding: 0 0 0 300px;
+        }
+
+        .right-form-top {
+
+          margin: 0 0 0 126px;
+
+        }
+
+        .silver {
+
+          color: #a0b59f;
+        }
+
+      }
+      .right-form-top, .right-form-bottom {
+
+        position: absolute;
+
+      }
+
+      .right-form-bottom {
+
+        margin: 15px 0 0 65px;
+
+      }
+
+      .payment-methods {
+
+        font-family: 'MicrosoftPhagsPa';
+        font-size: 44px;
+        color: #6c6c6c;
+
+        .cards {
+
+          margin-left: 185px;
+        }
+
+      }
+
+    }
+
+    button {
+
+      width: 320px;
+      height: 75px;
+      border: none;
+      background: #b0c694;
+      color: #ffffff;
+      font-family: 'MicrosoftPhagsPa';
+      font-size: 30px;
+      text-align: center;
+      margin-top: 130px;
+
+    }
+
+  }
+
+}
 .profile-page {
 
   .all-content {
@@ -1726,8 +1919,8 @@ body > section {
 
   .back {
     width: 100%;
-    height: 508px;
-    background-image: url("../../images/inner-images/marketer.png");
+    height: 700px;
+    background-image: url("../../images/inner-images/partnerwithusback1.png");
     background-attachment: fixed;
     background-repeat: no-repeat;
 
@@ -1741,7 +1934,7 @@ body > section {
         h1 {
           font-family: NirmalaUI-Bold;
           font-size: 52px;
-          color: #ffffff;
+          color: #5f6563;
           font-weight: bold;
           text-transform: uppercase;
           padding-top: 127px;
@@ -1775,7 +1968,7 @@ body > section {
 
       position: relative;
       margin: 0 auto;
-      width: 245px;
+      width: 550px;
       height: 42px;
       background: #ffffff;
       top: -7px;
@@ -1833,7 +2026,7 @@ body > section {
 
     width: 100%;
     height: 661px;
-    background-image: url("../../images/inner-images/marketer-bottom.png");
+    background-image: url("../../images/inner-images/Birds-in-the-Sky.png");
     margin-top: 80px;
     background-attachment: fixed;
     background-repeat: no-repeat;
@@ -1847,7 +2040,7 @@ body > section {
         right: 0;
         top: 175px;
         font-family: 'MicrosoftPhagsPa';
-        color: #ffffff;
+        color: #5f6563;
         text-align: right;
 
         h4 {
@@ -1859,17 +2052,18 @@ body > section {
           font-size: 48px;
           font-family: 'MicrosoftPhagsPa-Bold';
           padding: 45px 0;
-          color: #ffffff;
+          color: #5f6563;
         }
 
         button {
 
           width: 250px;
           height: 80px;
-          background: transparent;
+          // background: transparent;
+          background-color: #ffffff;
           border: 1px solid #ffffff;
           font-size: 30px;
-          color: #ffffff;
+          color: #b0c694;
 
         }
 
@@ -2234,7 +2428,7 @@ body > section {
     width: 100%;
     height: 185px;
     position: relative;
-    top: 100px;
+    // top: 100px;
 
     .footer-content {
 
@@ -2348,52 +2542,94 @@ body > section {
         border-bottom: 1px solid #9fb59e;
       }
       .form-group {
-        .form-control {
+        // .form-control {
 
-          height: 57px;
-          border: 1px solid #c2c9c2;
-          color: #c2c9c2;
-          font-size: 18px;
+        //   height: 57px;
+        //   border: 1px solid #c2c9c2;
+        //   color: #c2c9c2;
+        //   font-size: 18px;
 
-        }
-        input[type=submit] {
-          width: 120px;
-          height: 30px;
-          background: #9fb59e;
-          text-align: center;
-          font-size: 16px;
-          color: #ffffff;
-          border: none;
-          padding: 0;
-        }
+        // }
+        // input[type=submit] {
+        //   width: 120px;
+        //   height: 30px;
+        //   background: #9fb59e;
+        //   text-align: center;
+        //   font-size: 16px;
+        //   color: #ffffff;
+        //   border: none;
+        //   padding: 0;
+        // }
 
-        .control-label {
+        // .control-label {
 
-          font-family: NirmalaUI;
-          font-size: 18px;
-          color: #727971;
-        }
+        //   font-family: NirmalaUI;
+        //   font-size: 18px;
+        //   color: #727971;
+        // }
 
       }
 
     }
 
-    .user-image {
+    // .user-image {
 
-      margin: 0 auto;
-    }
+    //   margin: 0 auto;
+    // }
 
   }
 
+.modalDialog {
+  position: fixed;
+  font-family: Arial, Helvetica, sans-serif;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0,0,0,0.8);
+  z-index: 99999;
+  opacity:0;
+  -webkit-transition: opacity 400ms ease-in;
+  -moz-transition: opacity 400ms ease-in;
+  transition: opacity 400ms ease-in;
+  pointer-events: none;
+}
 
+.modalDialog:target {
+  opacity:1;
+  pointer-events: auto;
+}
 
+.modalDialog > div {
+  width: 540px;
+  position: relative;
+  margin: 10% auto;
+  padding: 5px 20px 13px 20px;
+  border-radius: 10px;
+  background: #fff;
+  background: -moz-linear-gradient(#fff, #999);
+  background: -webkit-linear-gradient(#fff, #999);
+  background: -o-linear-gradient(#fff, #999);
+}
 
+.close {
+  background: #606061;
+  color: #FFFFFF;
+  line-height: 25px;
+  position: absolute;
+  right: -12px;
+  text-align: center;
+  top: -10px;
+  width: 24px;
+  text-decoration: none;
+  font-weight: bold;
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  border-radius: 12px;
+  -moz-box-shadow: 1px 1px 3px #000;
+  -webkit-box-shadow: 1px 1px 3px #000;
+  box-shadow: 1px 1px 3px #000;
+}
 
-
-
-
-
-
-
-
+.close:hover { background: #00d9ff; }
 

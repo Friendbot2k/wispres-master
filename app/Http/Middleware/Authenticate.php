@@ -23,7 +23,7 @@ class Authenticate
             } else {
                 if($guard == 'admin')
                     return redirect('admin/login');
-                return redirect()->guest('login');
+                return redirect()->guest('home');
             }
         }
 

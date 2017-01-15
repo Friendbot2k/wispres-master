@@ -1,0 +1,12 @@
+@media screen and (max-width: 1540px) {
+  .home-page .back .back-content {
+    right: 7%; } }
+@media screen and (max-width: 1440px) {
+  .home-page .back .back-content {
+    right: 3%;
+    width: 540px; }
+
+  .home-page .back .back-content h2 {
+    font-size: 24px; } }
+
+/*# sourceMappingURL=1440.css.map */

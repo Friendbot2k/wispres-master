@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AA0BA,qCAAsC;EACpC,8BAA8B;IAE5B,KAAK,EAAE,EAAE;AASb,qCAAsC;EACpC,8BAA8B;IAE5B,KAAK,EAAE,EAAE;IACT,KAAK,EAAE,KAAK;;EAGd,iCAAkC;IAEhC,SAAS,EAAE,IAAI",
+"sources": ["1440.scss"],
+"names": [],
+"file": "1440.css"
+}

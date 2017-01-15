@@ -108,6 +108,22 @@
 }
 
 .user-viewed {
-    background-color: #b0c694;
+    background-color: #a0b59f;
+}
+.user-viewed > a > h3{
+      color: #fff !important;
+  }
+
+.user-viewed > a{
+    color: #fff !important;
+    text-decoration: none;
+  }
+
+.user-viewed > span{
+    color: #fff !important;
+}
+
+.h100{
+    height: 100px;
 }
 

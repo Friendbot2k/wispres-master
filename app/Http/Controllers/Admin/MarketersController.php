@@ -43,6 +43,7 @@ class MarketersController extends AdminBaseController
     {
         $marketer = Marketer::withTrashed()->findOrFail($id);
         $marketer->update(['deleted_at' => NULL]);
+        return back()->with('success','Marketer account activated.');
     }
     
     public function contract($id)

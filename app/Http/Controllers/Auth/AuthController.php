@@ -15,6 +15,7 @@ use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use App\Http\Controllers\NotificationsController;
 use App\Http\Controllers\PaypalController;
 use Mail;
+use Exception;
 
 class AuthController extends Controller
 {
@@ -66,7 +67,7 @@ class AuthController extends Controller
             'status' => 'required',
             'payment' => 'required',
             'promo_code' => 'exists:marketers,promo_code',
-//            'terms' => 'required',
+            'terms' => 'required',
         ]);
     }
 
@@ -89,9 +90,23 @@ class AuthController extends Controller
         
         if(isset($data['promo_code']))
             $create['promo_code'] = $data['promo_code'];
-
-        $user = User::create($create);
-
+            $user = User::create($create);
+            $token = csrf_token();
+            $url = "http://keepingitsimple.app/approve-account/$user->id/$token";
+            UserActivation::create(['user_id' => $user->id,'token' =>$token]);
+        try{
+            Mail::send('emails.confirm', array('url' => "$url"), function($message) use ($user)
+            {
+                $message->from(env('SENDER_EMAIL'), env('SENDER_NAME'));
+                $message->to("$user->email", "$user->name")->subject('Confirmation!');
+            });
+        }catch(Exception $e){
+            User::withTrashed()->find($user->id)->forceDelete();
+            if($e->getCode() == 554)
+                return view('auth.register')->with('email_error', 'Email doesn\'t exists.');
+            else
+                return back()->with('error', 'Something went wrong');
+        }
         if ($data['payment'] == 'paypal')
             return redirect("getCheckout/$user->status/$user->id");
 
@@ -116,16 +131,16 @@ class AuthController extends Controller
             }
 
 
-            $token = csrf_token();
-            $url = "http://keepingitsimple.app/approve-account/$user->id/$token";
-
-            UserActivation::create(['user_id' => $user->id,'token' =>$token]);
-
-            Mail::send('emails.confirm', array('url' => "$url"), function($message) use ($user)
-            {
-                $message->from('simpleapp789@gmail.com', 'Simple');
-                $message->to($user->email, "$user->name")->subject('Confirmation!');
-            });
+//            $token = csrf_token();
+//            $url = "http://keepingitsimple.app/approve-account/$user->id/$token";
+//
+//            UserActivation::create(['user_id' => $user->id,'token' =>$token]);
+//
+//            Mail::send('emails.confirm', array('url' => "$url"), function($message) use ($user)
+//            {
+//                $message->from(env('SENDER_EMAIL'), env('SENDER_NAME'));
+//                $message->to($user->email, "$user->name")->subject('Confirmation!');
+//            });
 
             if($data['promo_code']!= "") {
                 $marketer = Marketer::where('promo_code',$data['promo_code'])->first();

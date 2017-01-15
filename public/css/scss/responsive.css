@@ -1,0 +1,43 @@
+@media screen and (max-width: 1800px) {
+  .home-page .back .back-content {
+    width: 580px;
+    padding: 20px 10px 30px 25px;
+    right: 11%; }
+
+  .home-page .back .back-content h2 {
+    font-size: 30px; }
+
+  .home-page .back .back-content h1 {
+    font-size: 48px; } }
+@media screen and (max-width: 1540px) {
+  .home-page .back .back-content {
+    right: 7%; } }
+@media screen and (max-width: 1440px) {
+  .home-page .back .back-content {
+    right: 3%;
+    width: 540px; }
+
+  .home-page .back .back-content h2 {
+    font-size: 24px; } }
+@media screen and (max-width: 1280px) {
+  .home-page .content .service .service-content {
+    padding: 50px 38px; }
+
+  header nav .menu .right-menu ul li a {
+    padding: 23px 13px; } }
+@media screen and (max-width: 1330px) {
+  .home-page .back .back-content {
+    width: 460px;
+    right: 1%; }
+
+  .home-page .back .back-content h1 {
+    font-size: 38px; } }
+@media screen and (max-height: 775px) {
+  .profile-page .all-content .profile-content .slide-bar {
+    position: absolute;
+    min-height: 600px; }
+
+  .transperent .pop-up {
+    margin: 25px 0 0 100px; } }
+
+/*# sourceMappingURL=responsive.css.map */

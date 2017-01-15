@@ -11,7 +11,21 @@
 |
 */
 
-Route::get('aaa','HomeController@aaa');
+//Route::get('aaa',function(){
+//   try {
+//        Mail::send('emails.confirm', array('url' => "aaaa"), function ($message) {
+//            $message->from('simpleapp789@gmail.com', 'Simple');
+//            $message->to('simpleapp789@gmail.com', "bbbbb")->subject('Confirmation!');
+//        });
+//    }catch(Exception $e){
+//        if($e->getCode() == 554)
+//            session()->flash('email_error', 'Email doesn\'t exists.');
+//        else
+//            session()->flash('error', 'Something went wrong');
+//            dd($e);
+//    }
+//    dd(11);
+//});
 
 
 Route::get('bbb',function(){
@@ -129,7 +143,7 @@ Route::group([ 'prefix' => 'user', 'namespace' => 'User'],function(){
     Route::post('videos/add','AnswerController@addVideos');
     Route::post('images/add','AnswerController@addImages');
 
-    Route::get('user/question/answer/{id}/{alias}','AnswerController@getAlias');
+    Route::get('question/answer/{id}/{alias}','AnswerController@getAlias');
 
     Route::get('notification/changeStatus/{id}','UserBaseController@changeStatus');
     Route::get('notification/all','UserBaseController@getAllNotifications');
@@ -196,10 +210,10 @@ Route::get('contact','ContactController@index');
 Route::get('getLocation','ContactController@getLocation');
 Route::post('contact','ContactController@sendMail');
 
-
-Route::get('about','AboutUSController@index');
+Route::get('terms','TermsController@index');
+Route::get('aboutUs','AboutUSController@index');
 Route::get('partnerWithUS','MarketerController@index');
-
+Route::get('marketerContract', 'MarketerContractController@index');
 
 //Route::get('order', ['as' => 'order', 'uses' => 'PagesController@getOrder']);
 //Route::post('order', ['as' => 'order-post', 'uses' => 'PagesController@postOrder']);

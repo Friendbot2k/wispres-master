@@ -11,15 +11,15 @@
         </div>
 
         <div class="tab1-content">
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                has been the industry's standard dummy text ever since the 1500s, when an unknown
-                printer took a galley of type and scrambled it to make a type specimen book.</p>
+            <p>
+                {{  $user->user()->about != NULL ?  $user->user()->about :'' }}
+            </p>
            <div class="contact-info">
                 <div class="links">
-                    <a href="#"><i class="fa fa-facebook facebook" aria-hidden="true"></i></a>
-                    <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                    <a href="#"><i class="fa fa-google-plus google-plus" aria-hidden="true"></i></a>
-                    <a href="#"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a>
+                    <a href="{{ $user->user()->facebook != NULL ? $user->user()->facebook : '#'  }}"><i class="fa fa-facebook facebook" aria-hidden="true"></i></a>
+                    <a href="{{ $user->user()->twitter != NULL ? $user->user()->twitter : '#'  }}"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                    <a href="{{ $user->user()->google != NULL ? $user->user()->google : '#'  }}"><i class="fa fa-google-plus google-plus" aria-hidden="true"></i></a>
+                    <a href="{{ $user->user()->pinterest != NULL ? $user->user()->pinterest : '#'  }}"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a>
                 </div>
                 <p><i class="fa fa-envelope-o" aria-hidden="true"></i> {{ $user->user()->email  }}</p>
            </div>
