@@ -1,13 +1,17 @@
 <?php
 
-namespace DummyNamespace;
+namespace App\Http\Controllers;
 
-use DummyRootNamespaceHttp\Requests;
-use DummyRootNamespaceHttp\Controllers\Controller;
 
-use DummyRootNamespace{{modelName}};
+use App\Http\Controllers\User\UserBaseController;
+use App\Http\Controllers\Marketer\MarketerBaseController;
+use App\Http\Requests;
+use App\Models\Answer;
+use App\Models\Home;
+use App\User;
+use App\Models\Question;
 use Illuminate\Http\Request;
-use Session;
+use Illuminate\Pagination\Paginator;
 
 class ServicesController extends Controller
 {
@@ -18,102 +22,102 @@ class ServicesController extends Controller
      */
     public function index()
     {
-        ${{crudName}} = {{modelName}}::paginate({{pagination}});
+        // ${{crudName}} = {{modelName}}::paginate({{pagination}});
 
-        return view('{{viewPath}}{{viewName}}.index', compact('{{crudName}}'));
+        return view('services', compact('header','content','search','register','marketer1','about'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\View\View
-     */
-    public function create()
-    {
-        return view('{{viewPath}}{{viewName}}.create');
-    }
+    // /**
+    //  * Show the form for creating a new resource.
+    //  *
+    //  * @return \Illuminate\View\View
+    //  */
+    // public function create()
+    // {
+    //     return view('{{viewPath}}{{viewName}}.create');
+    // }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     *
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
-     */
-    public function store(Request $request)
-    {
-        {{validationRules}}
-        $requestData = $request->all();
-        {{fileSnippet}}
-        {{modelName}}::create($requestData);
+    // /**
+    //  * Store a newly created resource in storage.
+    //  *
+    //  * @param \Illuminate\Http\Request $request
+    //  *
+    //  * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+    //  */
+    // public function store(Request $request)
+    // {
+    //     {{validationRules}}
+    //     $requestData = $request->all();
+    //     {{fileSnippet}}
+    //     {{modelName}}::create($requestData);
 
-        Session::flash('flash_message', '{{modelName}} added!');
+    //     Session::flash('flash_message', '{{modelName}} added!');
 
-        return redirect('{{routeGroup}}{{viewName}}');
-    }
+    //     return redirect('{{routeGroup}}{{viewName}}');
+    // }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     *
-     * @return \Illuminate\View\View
-     */
-    public function show($id)
-    {
-        ${{crudNameSingular}} = {{modelName}}::findOrFail($id);
+    // /**
+    //  * Display the specified resource.
+    //  *
+    //  * @param  int  $id
+    //  *
+    //  * @return \Illuminate\View\View
+    //  */
+    // public function show($id)
+    // {
+    //     ${{crudNameSingular}} = {{modelName}}::findOrFail($id);
 
-        return view('{{viewPath}}{{viewName}}.show', compact('{{crudNameSingular}}'));
-    }
+    //     return view('{{viewPath}}{{viewName}}.show', compact('{{crudNameSingular}}'));
+    // }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     *
-     * @return \Illuminate\View\View
-     */
-    public function edit($id)
-    {
-        ${{crudNameSingular}} = {{modelName}}::findOrFail($id);
+    // /**
+    //  * Show the form for editing the specified resource.
+    //  *
+    //  * @param  int  $id
+    //  *
+    //  * @return \Illuminate\View\View
+    //  */
+    // public function edit($id)
+    // {
+    //     ${{crudNameSingular}} = {{modelName}}::findOrFail($id);
 
-        return view('{{viewPath}}{{viewName}}.edit', compact('{{crudNameSingular}}'));
-    }
+    //     return view('{{viewPath}}{{viewName}}.edit', compact('{{crudNameSingular}}'));
+    // }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  int  $id
-     * @param \Illuminate\Http\Request $request
-     *
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
-     */
-    public function update($id, Request $request)
-    {
-        {{validationRules}}
-        $requestData = $request->all();
-        {{fileSnippet}}
-        ${{crudNameSingular}} = {{modelName}}::findOrFail($id);
-        ${{crudNameSingular}}->update($requestData);
+    // /**
+    //  * Update the specified resource in storage.
+    //  *
+    //  * @param  int  $id
+    //  * @param \Illuminate\Http\Request $request
+    //  *
+    //  * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+    //  */
+    // public function update($id, Request $request)
+    // {
+    //     {{validationRules}}
+    //     $requestData = $request->all();
+    //     {{fileSnippet}}
+    //     ${{crudNameSingular}} = {{modelName}}::findOrFail($id);
+    //     ${{crudNameSingular}}->update($requestData);
 
-        Session::flash('flash_message', '{{modelName}} updated!');
+    //     Session::flash('flash_message', '{{modelName}} updated!');
 
-        return redirect('{{routeGroup}}{{viewName}}');
-    }
+    //     return redirect('{{routeGroup}}{{viewName}}');
+    // }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     *
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
-     */
-    public function destroy($id)
-    {
-        {{modelName}}::destroy($id);
+    // /**
+    //  * Remove the specified resource from storage.
+    //  *
+    //  * @param  int  $id
+    //  *
+    //  * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+    //  */
+    // public function destroy($id)
+    // {
+    //     {{modelName}}::destroy($id);
 
-        Session::flash('flash_message', '{{modelName}} deleted!');
+    //     Session::flash('flash_message', '{{modelName}} deleted!');
 
-        return redirect('{{routeGroup}}{{viewName}}');
-    }
+    //     return redirect('{{routeGroup}}{{viewName}}');
+    // }
 }

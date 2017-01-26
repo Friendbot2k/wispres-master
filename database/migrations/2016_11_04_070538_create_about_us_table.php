@@ -14,10 +14,10 @@ class CreateAboutUsTable extends Migration
     {
         Schema::create('about', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('devider_text');
-            $table->string('about_hading');
+            $table->string('divider_text');
+            $table->string('about_heading');
             $table->text('about_content');
-            $table->string('image_haed');
+            $table->string('image_head');
             $table->string('image_text');
             $table->timestamps();
         });

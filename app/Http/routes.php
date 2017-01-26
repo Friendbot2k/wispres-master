@@ -213,7 +213,7 @@ Route::post('contact','ContactController@sendMail');
 Route::get('terms','TermsController@index');
 Route::get('aboutUs','AboutUSController@index');
 Route::get('partnerWithUS','MarketerController@index');
-Route::get('marketerContract', 'MarketerContractController@index');
+Route::get('services', 'ServicesController@index');
 
 //Route::get('order', ['as' => 'order', 'uses' => 'PagesController@getOrder']);
 //Route::post('order', ['as' => 'order-post', 'uses' => 'PagesController@postOrder']);
